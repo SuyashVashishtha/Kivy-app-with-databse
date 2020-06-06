@@ -1,0 +1,1044 @@
+
+        
+
+
+WindowManager:
+    Mainscreen:
+    Secondscreen:
+    Thirdscreen:
+    Fourthscreen:
+    Fifthscreen:
+   
+   
+
+
+
+<P>:
+    Label:
+        text: "Hello this toolkit is developed by"
+        pos_hint: {'x': 0, 'y': 0.3} 
+        font_size: 25
+
+    Label:
+        text: "SUAYSH VASHISHTHA"
+        pos_hint: {'x': 0, 'y': 0} 
+        font_size: 25
+
+    Label:
+        text: "Made by PYTHON and Kivy"
+        pos_hint: {'x': 0, 'y': -0.1} 
+        font_size: 25
+
+    
+            
+   
+
+<Mainscreen>:
+    
+    name: "main"
+
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "images/main screen.jpg"
+
+    Widgets:
+        Button:
+            text: "About"
+            size_hint: 0.21,0.05
+            pos_hint: {'x': 0.75, 'y':0.93}
+            on_release: root.btn()
+
+            
+   
+
+    Button:
+        text:"Contact Us"
+        size_hint: 0.21,0.05
+        pos_hint: {'x': 0.75, 'y':0.86}
+
+    Label:
+        text: "UTILITY TOOLKIT"
+        color:1,0,0,1
+        font_size: 52
+        size_hint: 1, 0.5  
+        pos_hint: {'x': 0, 'y': 0.4} 
+            
+    
+        
+    Button:
+        text: "START"
+        font_size: 26
+        color: 0.92,1,0.29,1
+        size_hint: 0.4,0.2
+        pos_hint: {'x': 0.3, 'y':0.1}
+        on_release:
+            app.root.current = "menu"
+            root.manager.transition.direction = "right"
+
+
+<Secondscreen>:
+
+    name: "menu"
+
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "images/second screen.png"
+
+    #CALCULATOR #################################################################################
+    
+    Button:
+        background_normal: ''
+        background_color: 0,0,0,0
+        size_hint: 0.3,0.15
+        pos_hint: {'x': 0.12, 'y':0.7}
+        on_release:
+            app.root.current = "calculator"
+            root.manager.transition.direction = "right"
+        
+        canvas:
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: "images/calculator.png"
+
+    Label:
+        text: "CALCULATOR"
+        font_size: 25
+        color: 0.92,1,0.29,1
+        pos_hint: {'x': -0.24, 'y': 0.17}
+
+
+    #Notes     ###############################################################################################
+
+    Button:
+        background_normal: ''      
+        background_color: 0,0,0,0
+        size_hint: 0.3,0.15
+        pos_hint: {'x': 0.62, 'y':0.7}
+        on_release:
+            app.root.current = "notes"
+            root.manager.transition.direction = "right"
+        
+        canvas:
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: "images/notes.png"
+
+    Label:
+        text: "NOTES"
+        font_size: 25
+        color: 0.92,1,0.29,1
+        pos_hint: {'x': 0.24, 'y': 0.17}
+
+           
+
+
+        
+        # TASK #######################################################################
+
+    Button:
+        background_normal: ''
+        background_color: 0,0,0,0
+        
+        size_hint: 0.3,0.15
+        pos_hint: {'x': 0.12, 'y':0.4}
+        on_release:
+            app.root.current = "Task"
+            root.manager.transition.direction = "right"
+
+        canvas:
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: "images/list.png"
+
+    Label:
+        text: "To Do List"
+        font_size: 25
+        color: 0.92,1,0.29,1
+        pos_hint: {'x': -0.24, 'y': -0.14}
+
+    
+
+    Button:
+        text:"back"
+        size_hint: 0.3,0.08
+        pos_hint: {'x': 0.38, 'y':0}
+
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "left"
+
+<Thirdscreen>: 
+
+    name: "calculator"
+
+    CalcGridLayout:
+        id: calculator
+        display: entry
+        rows: 6
+        padding: 10
+        spacing: 10
+            
+        BoxLayout:
+            TextInput:
+                id: entry
+                font_size: 70
+                multiline: False
+                size_hint: 0.7, 2.5
+                pos_hint: {'x':0, 'y':-1.4}
+
+        BoxLayout:
+            spacing: 8
+            Button:
+                text: "AC"
+                on_press: entry.text = ""
+                color: 1,1,1,1
+                background_normal: ''
+                background_color: 0.211,1,0.098,0.78
+                font_size: 50
+                size_hint: 1,0.65
+                pos_hint: {'x':0, 'y':-1.1}
+                
+
+            
+
+            Button:
+                text: "Back"
+                on_release:
+                    app.root.current = "menu"
+                    root.manager.transition.direction = "left"
+                color: 1,1,1,1
+                background_normal: ''
+                background_color: 0.211,1,0.098,0.78
+                font_size: 50
+                size_hint: 1,0.65
+                pos_hint: {'x':0, 'y':-1.1}
+            
+        BoxLayout:
+            spacing: 7
+            Button:
+                text: "7"
+                on_press: entry.text += self.text
+                color: 0,0,0,1
+                background_normal: ''
+                background_color: 1,1,1,1
+                size_hint: 0.72,0.7
+                pos_hint: {'x':0, 'y':-0.8}
+                font_size: 50
+                
+
+            Button:
+                text: "8"
+                on_press: entry.text += self.text
+                color: 0,0,0,1
+                background_normal: ''
+                background_color: 1,1,1,1
+                size_hint: 0.72,0.7
+                pos_hint: {'x':0, 'y':-0.8}
+                font_size: 50
+
+
+            Button:
+                text: "9"
+                on_press: entry.text += self.text
+                color: 0,0,0,1
+                background_normal: ''
+                background_color: 1,1,1,1
+                size_hint: 0.72,0.7
+                pos_hint: {'x':0, 'y':-0.8}
+                font_size: 50
+
+            Button:
+                text: "+"
+                on_press: entry.text += self.text
+                color: 1,1,1,1
+                background_normal: ''
+                background_color: 0.211,1,0.098,0.78
+                font_size: 50
+                size_hint: 0.72,0.7
+                pos_hint: {'x':0, 'y':-0.8}
+
+        BoxLayout:
+            spacing: 7
+            Button:
+                text: "4"
+                on_press: entry.text += self.text
+                color: 0,0,0,1
+                background_normal: ''
+                background_color: 1,1,1,1
+                size_hint: 0.72,0.7
+                pos_hint: {'x':0, 'y':-0.53}
+                font_size: 50
+
+            Button:
+                text: "5"
+                on_press: entry.text += self.text
+                color: 0,0,0,1
+                background_normal: ''
+                background_color: 1,1,1,1
+                size_hint: 0.72,0.7
+                pos_hint: {'x':0, 'y':-0.53}
+                font_size: 50
+
+            Button:
+                text: "6"
+                on_press: entry.text += self.text
+                color: 0,0,0,1
+                background_normal: ''
+                background_color: 1,1,1,1
+                size_hint: 0.72,0.7
+                pos_hint: {'x':0, 'y':-0.53}
+                font_size: 50
+
+            Button:
+                text: "Del"
+                on_press: entry.text += self.text
+                color: 1,1,1,1
+                background_normal: ''
+                background_color: 0.211,1,0.098,0.78
+                font_size: 50
+                size_hint: 0.72,0.7
+                pos_hint: {'x':0, 'y':-0.53}
+
+        BoxLayout:
+            spacing: 10
+            pos_hint: {'x':0, 'y':-0.8}
+            Button:
+                text: "1"
+                on_press: entry.text += self.text
+                color: 0,0,0,1
+                background_normal: ''
+                background_color: 1,1,1,1
+                size_hint: 0.73,0.7
+                pos_hint: {'x':0, 'y':-0.26}
+                font_size: 50
+
+            Button:
+                text: "2"
+                on_press: entry.text += self.text
+                color: 0,0,0,1
+                background_normal: ''
+                background_color: 1,1,1,1
+                size_hint: 0.73,0.7
+                pos_hint: {'x':0, 'y':-0.26}
+                font_size: 50
+
+            Button:
+                text: "3"
+                on_press: entry.text += self.text
+                color: 0,0,0,1
+                background_normal: ''
+                background_color: 1,1,1,1
+                size_hint: 0.72,0.7
+                pos_hint: {'x':0, 'y':-0.26}
+                font_size: 50
+
+
+            Button:
+                text: "*"
+                on_press: entry.text += self.text
+                color: 1,1,1,1
+                background_normal: ''
+                background_color: 0.211,1,0.098,0.78
+                font_size: 50
+                size_hint: 0.73,0.7
+                pos_hint: {'x':0, 'y':-0.26}
+
+        BoxLayout:
+            spacing: 7
+            
+            Button:
+                text: "."
+                on_press: entry.text += self.text
+                color: 0,0,0,1
+                background_normal: ''
+                background_color: 1,1,1,1
+                size_hint: 0.72,0.7
+                font_size: 50
+                
+
+            Button:
+                text: "0"
+                on_press: entry.text += self.text
+                color: 0,0,0,1
+                background_normal: ''
+                background_color: 1,1,1,1
+                size_hint: 0.72,0.7
+                font_size: 50
+
+
+            Button:
+                text: "="
+                on_press: calculator.calculate(entry.text)
+                color: 1,1,1,1
+                background_normal: ''
+                background_color: 0.211,1,0.098,0.78
+                font_size: 50
+                size_hint: 0.72,0.7
+
+
+            Button:
+                text: "/"
+                on_press: entry.text += self.text
+                color: 1,1,1,1
+                background_normal: ''
+                background_color: 0.211,1,0.098,0.78
+                font_size: 50
+                size_hint: 0.72,0.7
+
+<Fourthscreen>:
+    name: "notes"
+    
+    
+
+    Label:
+        text: "notes"
+        
+    Button:
+        text:"back"
+        size_hint: 0.3,0.2
+        pos_hint: {'x': 0.34, 'y':0.1}
+        on_release:
+            app.root.current = "menu"
+            root.manager.transition.direction = "left"
+  
+   
+<a1>:
+    name: "a1"
+    t1: t1
+    d1: d1
+   
+
+    Button:
+        
+        pos_hint: {'x': 0.9, 'y':1.02}
+        size_hint: 0.1,0.1
+        text: "O"
+        on_release:
+            root.fill1()
+
+    
+
+    GridLayout:
+        rows:3
+        padding: 3
+        
+        size_hint: 0.9,1
+        pos_hint: {'x': 0.05, 'y':0}
+
+
+        BoxLayout:
+
+            TextInput:
+                id: t1
+                text: "Task 1"
+                size_hint: 0.5, 0.3
+                pos_hint: {'x': 0.05, 'y':0.6}
+                multilines: False
+        BoxLayout:
+
+            TextInput:
+                id: d1
+                multiline: True
+                size_hint: 0.5, 1
+                pos_hint: {'x': 0.03, 'y':0.5}
+                text: "Description 1"
+                
+               
+    Button:
+        text: "SUBMIT"
+        
+        
+        color: 0,0,0,1
+        background_normal: ''
+        background_color: 1,3,1,1
+        size_hint: 0.4, 0.16
+        pos_hint: {'x': 0.02, 'y':0.04}
+        font_size: 23
+        on_press:
+            root.addtask1()
+
+    Button:
+        text: "DELETE"
+        
+        
+        color: 0,0,0,1
+        background_normal: ''
+        background_color: 1,3,1,1
+        size_hint: 0.4, 0.16
+        pos_hint: {'x': 0.6, 'y':0.04}
+        font_size: 23
+        on_release:
+            root.delpop1()
+       
+
+<a2>:
+    t2:t2
+    d2:d2
+
+    
+   
+
+    Button:
+        
+        pos_hint: {'x': 0.9, 'y':1.02}
+        size_hint: 0.1,0.1
+        text: "O"
+        on_release:
+            root.fill2()
+
+    
+
+    GridLayout:
+        rows:3
+        padding: 3
+        
+        size_hint: 0.9,1
+        pos_hint: {'x': 0.05, 'y':0}
+
+
+        BoxLayout:
+
+            TextInput:
+                id: t2
+                text: "Task 1"
+                size_hint: 0.5, 0.3
+                pos_hint: {'x': 0.05, 'y':0.6}
+                multilines: False
+        BoxLayout:
+
+            TextInput:
+                id: d2
+                multiline: True
+                size_hint: 0.5, 1
+                pos_hint: {'x': 0.03, 'y':0.5}
+                text: "Description 1"
+                
+               
+    Button:
+        text: "SUBMIT"
+        
+        
+        color: 0,0,0,1
+        background_normal: ''
+        background_color: 1,3,1,1
+        size_hint: 0.4, 0.16
+        pos_hint: {'x': 0.02, 'y':0.04}
+        font_size: 23
+        on_press:
+            root.addtask2()
+
+    Button:
+        text: "DELETE"
+        
+        
+        color: 0,0,0,1
+        background_normal: ''
+        background_color: 1,3,1,1
+        size_hint: 0.4, 0.16
+        pos_hint: {'x': 0.6, 'y':0.04}
+        font_size: 23
+        on_release:
+            root.delpop2()
+<a3>:
+    t3:t3
+    d3:d3
+
+    Button:
+        pos_hint: {'x': 0.9, 'y':1.02}
+        size_hint: 0.1,0.1
+        text: "O"
+        on_release:
+            root.fill3()
+
+       
+
+        
+
+    GridLayout:
+        rows:3
+        padding: 3
+        
+        size_hint: 0.9,1
+        pos_hint: {'x': 0.05, 'y':0}
+
+
+        BoxLayout:
+
+            TextInput:
+                id: t3
+                text: "Task 1"
+                size_hint: 0.5, 0.3
+                pos_hint: {'x': 0.05, 'y':0.6}
+                multilines: False
+        BoxLayout:
+
+            TextInput:
+                id: d3
+                multiline: True
+                size_hint: 0.5, 1
+                pos_hint: {'x': 0.03, 'y':0.5}
+                text: "Description 1"
+                
+               
+    Button:
+        text: "SUBMIT"
+        
+        
+        color: 0,0,0,1
+        background_normal: ''
+        background_color: 1,3,1,1
+        size_hint: 0.4, 0.16
+        pos_hint: {'x': 0.02, 'y':0.04}
+        font_size: 23
+        on_press:
+            root.addtask3()
+
+    Button:
+        text: "DELETE"
+        
+        
+        color: 0,0,0,1
+        background_normal: ''
+        background_color: 1,3,1,1
+        size_hint: 0.4, 0.16
+        pos_hint: {'x': 0.6, 'y':0.04}
+        font_size: 23
+        on_release:
+            root.delpop3()
+
+<a4>:
+    t4:t4
+    d4:d4
+
+    Button:
+        
+        pos_hint: {'x': 0.9, 'y':1.02}
+        size_hint: 0.1,0.1
+        text: "O"
+        on_release:
+            root.fill4()
+
+    
+
+    GridLayout:
+        rows:3
+        padding: 3
+        
+        size_hint: 0.9,1
+        pos_hint: {'x': 0.05, 'y':0}
+
+
+        BoxLayout:
+
+            TextInput:
+                id: t4
+                text: "Task 1"
+                size_hint: 0.5, 0.3
+                pos_hint: {'x': 0.05, 'y':0.6}
+                multilines: False
+        BoxLayout:
+
+            TextInput:
+                id: d4
+                multiline: True
+                size_hint: 0.5, 1
+                pos_hint: {'x': 0.03, 'y':0.5}
+                text: "Description 1"
+                
+               
+    Button:
+        text: "SUBMIT"
+        
+        
+        color: 0,0,0,1
+        background_normal: ''
+        background_color: 1,3,1,1
+        size_hint: 0.4, 0.16
+        pos_hint: {'x': 0.02, 'y':0.04}
+        font_size: 23
+        on_press:
+            root.addtask4()
+
+    Button:
+        text: "DELETE"
+        
+        
+        color: 0,0,0,1
+        background_normal: ''
+        background_color: 1,3,1,1
+        size_hint: 0.4, 0.16
+        pos_hint: {'x': 0.6, 'y':0.04}
+        font_size: 23
+        on_release:
+            root.delpop4()
+<a5>:
+    t5:t5
+    d5:d5
+
+   
+    Button:
+        
+        pos_hint: {'x': 0.9, 'y':1.02}
+        size_hint: 0.1,0.1
+        text: "O"
+        on_release:
+            root.fill1()
+
+    
+
+    GridLayout:
+        rows:3
+        padding: 3
+        
+        size_hint: 0.9,1
+        pos_hint: {'x': 0.05, 'y':0}
+
+
+        BoxLayout:
+
+            TextInput:
+                id: t5
+                text: "Task 1"
+                size_hint: 0.5, 0.3
+                pos_hint: {'x': 0.05, 'y':0.6}
+                multilines: False
+        BoxLayout:
+
+            TextInput:
+                id: d5
+                multiline: True
+                size_hint: 0.5, 1
+                pos_hint: {'x': 0.03, 'y':0.5}
+                text: "Description 1"
+                
+               
+    Button:
+        text: "SUBMIT"
+        
+        
+        color: 0,0,0,1
+        background_normal: ''
+        background_color: 1,3,1,1
+        size_hint: 0.4, 0.16
+        pos_hint: {'x': 0.02, 'y':0.04}
+        font_size: 23
+        on_press:
+            root.addtask5()
+
+    Button:
+        text: "DELETE"
+        
+        
+        color: 0,0,0,1
+        background_normal: ''
+        background_color: 1,3,1,1
+        size_hint: 0.4, 0.16
+        pos_hint: {'x': 0.6, 'y':0.04}
+        font_size: 23
+        on_release:
+            root.delpop5()
+
+
+################################################################################# del pop ######################
+<d1>:
+
+    GridLayout:
+        rows:2
+        padding: 10
+        spacing: 10
+        size_hint: 0.9,0.7
+        pos_hint: {'x': 0.05, 'y':0.1}
+
+
+        BoxLayout:
+
+
+            Label:
+                text: "Delete this task ??"
+                
+                font_size: 25
+
+        BoxLayout:            
+            Button:
+                text: "DELETE"
+                
+                color: 0,0,0,1
+                background_normal: ''
+                background_color: 1,1,1,1
+                
+                font_size: 20
+                on_release:
+                    root.deltask1()             
+
+<d2>:
+    GridLayout:
+        rows:2
+        padding: 10
+        spacing: 10
+        size_hint: 0.9,0.7
+        pos_hint: {'x': 0.05, 'y':0.1}
+
+
+        BoxLayout:
+
+
+            Label:
+                text: "Delete this task ??"
+                
+                font_size: 25
+
+        BoxLayout:            
+            Button:
+                text: "DELETE"
+                
+                color: 0,0,0,1
+                background_normal: ''
+                background_color: 1,1,1,1
+                
+                font_size: 20
+                on_release:
+                    root.deltask2()
+                
+<d3>:
+    GridLayout:
+        rows:2
+        padding: 10
+        spacing: 10
+        size_hint: 0.9,0.7
+        pos_hint: {'x': 0.05, 'y':0.1}
+
+
+        BoxLayout:
+
+
+            Label:
+                text: "Delete this task ??"
+                
+                font_size: 25
+
+        BoxLayout:            
+            Button:
+                text: "DELETE"
+                
+                color: 0,0,0,1
+                background_normal: ''
+                background_color: 1,1,1,1
+                
+                font_size: 20
+                on_release:
+                    root.deltask3()
+<d4>:
+    GridLayout:
+        rows:2
+        padding: 10
+        spacing: 10
+        size_hint: 0.9,0.7
+        pos_hint: {'x': 0.05, 'y':0.1}
+
+
+        BoxLayout:
+
+
+            Label:
+                text: "Delete this task ??"
+                
+                font_size: 25
+
+        BoxLayout:            
+            Button:
+                text: "DELETE"
+                
+                color: 0,0,0,1
+                background_normal: ''
+                background_color: 1,1,1,1
+                
+                font_size: 20
+                on_release:
+                    root.deltask4()
+                
+<d5>:
+    GridLayout:
+        rows:2
+        padding: 10
+        spacing: 10
+        size_hint: 0.9,0.7
+        pos_hint: {'x': 0.05, 'y':0.1}
+
+
+        BoxLayout:
+
+
+            Label:
+                text: "Delete this task ??"
+                
+                font_size: 25
+
+        BoxLayout:            
+            Button:
+                text: "DELETE"
+                
+                color: 0,0,0,1
+                background_normal: ''
+                background_color: 1,1,1,1
+                
+                font_size: 20
+                on_release:
+                    root.deltask5()
+                
+
+####################################################################################################################
+
+<Fifthscreen>:
+    name: "Task"
+    task1: task1
+    task2: task2
+    task3: task3
+    task4: task4
+    task5: task5
+    
+  
+
+    
+
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "images/taskscreen.png"
+
+    Button:
+        text: "O"
+        size_hint: 0.1, 0.07
+        pos_hint: {'x': 0.8, 'y':0.9}
+        
+        on_release:
+            root.ref()
+
+    
+    GridLayout:
+        id: todo
+                
+        rows: 6
+        
+        padding: 10
+        spacing: 4
+        size_hint: 1,0.8
+        pos_hint: {'x': 0.0, 'y':0.2}
+
+                
+
+        BoxLayout:
+            spacing:8
+            Label:
+                text: "TO Do LIST"
+                color: 0,0,0,1
+                font_size: 40
+
+                
+
+        BoxLayout:
+            spacing: 8
+            
+            Button:
+                id: task1
+                text: "Task 1"
+                
+                color: 0,0,0,1
+                background_normal: 'images/btn.png'
+               
+                on_release:
+                    root.taskinfo1()
+            
+
+        BoxLayout:
+            spacing: 8
+            
+
+            Button:          
+                id: task2    
+                text: "Task 2"
+                color: 0,0,0,1              
+                background_normal: 'images/btn.png'
+                on_release:
+                    root.taskinfo2()
+
+        BoxLayout:
+            
+            Button:
+                id: task3
+                text: "Task 3"                
+                color: 0,0,0,1
+                background_normal: 'images/btn.png'
+                                
+                on_release:
+                    root.taskinfo3()
+
+        
+        BoxLayout:
+            spacing: 8
+
+            Button:
+                id: task4
+                text: "Task 4"
+                background_normal: 'images/btn.png'
+                color: 0,0,0,1
+                
+                on_release:
+                    root.taskinfo4()
+
+        BoxLayout:
+            spacing: 8
+
+            Button:
+                id: task5
+                text: "Task 5"
+                color: 0,0,0,1
+                background_normal: 'images/btn.png'
+                                
+                on_release:
+                    root.taskinfo5()
+
+
+         
+
+      
+
+
+
+            
+
+
+
+        
+    Button:
+        text:"back"
+        size_hint: 0.2,0.1
+        pos_hint: {'x': 0.34, 'y':0.1}
+        on_release:
+            app.root.current = "menu"
+            root.manager.transition.direction = "left"
+
+
+
+
+        
+
+
+        
+    
+
+            
+
+
+
+
+        
+
+
